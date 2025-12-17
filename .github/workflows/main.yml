@@ -1,4 +1,4 @@
-name: Laravel Docker Test
+name: Laravel CI
 
 on:
   push:
@@ -13,26 +13,28 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Bước 1: Setup PHP để chạy lệnh test
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.4'
         extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, fileinfo
 
-    # Bước 2: Cài thư viện
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
 
-    # Bước 3: Tạo key
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs
+
     - name: Generate key
       run: php artisan key:generate
 
-    # Bước 4: Chạy Test (Kiểm tra xem code có lỗi logic không)
+    - name: Create Database
+      run: |
+        mkdir -p database
+        touch database/database.sqlite
+
     - name: Execute tests
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: :memory:
+        DB_DATABASE: database/database.sqlite
       run: php artisan test
