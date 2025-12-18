@@ -6,8 +6,8 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-primary">Bài tập cuối kỳ - Danh sách sản phẩm</h1>
         
+        <h1 class="text-primary">Bài ktra - DH52201505 - Ca 2</h1>
         <table class="table table-bordered mt-3">
             <thead class="table-dark">
                 <tr>
