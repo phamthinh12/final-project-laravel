@@ -9,9 +9,9 @@ Route::get('/home', function () {
 Route::get('/', function () {
     // Tạo dữ liệu giả
     $products = [
-        ['name' => 'Laptop Gaming', 'price' => 20000000],
-        ['name' => 'Chuột không dây', 'price' => 150000],
-        ['name' => 'Bàn phím cơ', 'price' => 800000],
+        ['name' => 'Màn hình', 'price' => 2000000],
+        ['name' => 'Ghế', 'price' => 1500000],
+        ['name' => 'Bàn ikea', 'price' => 800000],
     ];
 
     // Trả về view products kèm dữ liệu
