@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::get('/san-pham', function () {
+Route::get('/', function () {
     // Tạo dữ liệu giả
     $products = [
         ['name' => 'Laptop Gaming', 'price' => 20000000],
